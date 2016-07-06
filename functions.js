@@ -66,4 +66,12 @@ stuff.sort(function (person1, person2){
     )
 console.log(stuff);
 
-//console.log(stuff.sort(compareName());
+/*Create a function that can be used with Array.prototype.map. This function should take a number and 
+return its square. Then, use this function with map on an array of numbers to check the result.*/
+
+var arr1 = [2,3,4,5];
+var squares = arr1.map(function(num){
+        return num * num;
+});
+console.log(squares);
+
