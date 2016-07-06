@@ -22,3 +22,48 @@ function stringSort (a, b) {
 }
 console.log(stringSort("ba", "a"));
 
+/*Create an array of objects (don’t need to use new here, just regular object literals). 
+These objects will contain a name and email property. Then, run some code that will sort your array by the longest name. 
+Then, run some code that will sort your array by e-mail address in alphabetical order.*/
+
+var person1 = {
+    email: "celinebroomhead",
+    name: "eline"
+}
+
+var person2 = {
+    email: "stelledolan",
+    name: "estelle"
+}
+
+var stuff =[person1, person2];
+
+stuff.sort(function (person1, person2){
+        if (person1.name.length < person2.name.length) {
+            return 1;
+        }
+        else if (person1.name.length > person2.name.length) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
+    )
+console.log(stuff);
+
+stuff.sort(function (person1, person2){
+        if (person1.email > person2.email) {
+            return 1;
+        }
+        else if (person1.email < person2.email) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    } 
+    )
+console.log(stuff);
+
+//console.log(stuff.sort(compareName());
