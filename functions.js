@@ -75,3 +75,69 @@ var squares = arr1.map(function(num){
 });
 console.log(squares);
 
+
+/*Create a function that can be used with Array.prototype.map. This function should be able 
+to take an object and square its “num” property. Then, use this function with map on an 
+array of objects each containming a “num” property.*/
+
+var number = [{value: 2}, {value: 4}, {value: 6}];
+
+//var stuff = [number];
+
+var squared = number.map(function(obj){
+    return obj.value * obj.value;
+})
+console.log(squared)
+
+
+/*In a previous workshop, you had to create a function that took two numbers and an operation (add, sub, mult, …) 
+and returned the result of the operation on the two numbers. Here we are going to do the same but at a higher order. 
+Create a function called operationMaker that takes only a string called operation as argument. 
+This string could be “add”, “subtract”, “mult” or “div”. Your function will return a function that 
+will take two numbers and return the result of running operation on these numbers. The end result 
+should let me do something like this:
+
+var adder = operationMaker(“add”);
+var sum = adder(5, 10); //15
+
+var mult = operationMaker(“mult”);
+var product = mult(5, 10); // 50*/
+
+function operationMaker(operation){
+    if(operation === 'add'){
+        return function (num1, num2){
+            return num1 + num2;
+        }
+    }
+    else if (operation === 'mult'){
+        return function (num1, num2){
+            return num1 * num2;
+        }
+    }
+     else if (operation === 'substract'){
+        return function (num1, num2){
+            return num1 - num2;
+        }
+    }
+     else if (operation === 'div'){
+        return function (num1, num2){
+            return num1 / num2;
+        }
+    }
+}
+
+var op = operationMaker('mult')
+console.log(op(5,2));
+
+
+
+/*/function add(num1){
+    return function (num2){
+        return num1 + num2;
+    }
+}
+
+//add(10)(20) // this will pass both the parameters 
+//OR
+var increment = add(1);
+increment(10);*/
