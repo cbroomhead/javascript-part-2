@@ -13,16 +13,50 @@ method should output to the console which player won the fight based on their po
 creative as you like with the text of this method :)
 Finally, create a bunch of warriors and make them fight together.*/
 
-function Warrior(name, gender, level, weapon, power) {
-    this.warriorName = name;
-    this.warriorGender = gender;
-    this.warriorLevel = level;
-    this.warriorWeapon = weapon;
-    this.warriorPower = power;
-    fight : function (){
-        console.log(warriorName + " rushes to the arena with " + warriorWeapon)
+var WarriorPrototype = {
+    name: null,
+    gender: null,
+    level: 1,
+    weapon: "wooden sword",
+    power: null,
+    fight: function(){
+        var pronouns = null;
+        if(this.gender === 'F'){
+            pronouns = "her";
+        }
+        else {
+            pronouns = "his"
+        }
+        console.log(this.name + " rushes to the arena with " + pronouns + " " + this.weapon);
+    },
+    faceoff: function (opponent){
+        if (this.power > opponent.power){
+            console.log(this.name + " wins");
+        }
+        else {
+            console.log(opponent.name + " wins");
+        };
     }
 }
 
-var princess1 = new Warrior ("Xena", "F", "badass", "numchucks", 86);
-var princess1 = new Warrior ("Zelda", "F", "badass", "sword", 13);
+function Warrior (name, gender){
+    var warrior = Object.create(WarriorPrototype)
+    if (typeof name === "string"){
+    warrior.name = name;
+    }
+    if (gender === 'F' || gender === 'M'){
+        warrior.gender = gender;
+    }
+    else {
+        console.log("Your input is invalid");
+    }
+    
+    warrior.power= Math.random() * 100;
+    return warrior
+}
+
+var bob = Warrior("Bob", "M");
+var mary = Warrior("3", "F");
+bob.fight();
+mary.fight();
+bob.faceoff(mary);
